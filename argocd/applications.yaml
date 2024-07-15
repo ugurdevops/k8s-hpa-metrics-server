@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nodejs-app-hpa
+  namespace: argocd
+  labels:
+    app.kubernetes.io/managed-by: "Helm"
+  annotations:
+    meta.helm.sh/release-name: "argocd"
+    meta.helm.sh/release-namespace: "argocd"
+spec:
+  project: nodejsapp-hpa
+  source:
+    repoURL: https://github.com/ugurdevops/k8s-hpa-metrics-server.git
+    targetRevision: HEAD
+    path: helm-chart
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: apps-hpa

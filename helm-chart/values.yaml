@@ -1,0 +1,23 @@
+image:
+  repository: ugurdevops/nodejsapp
+  tag: latest
+
+replicaCount: 1
+
+service:
+  type: ClusterIP
+  port: 5000
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
